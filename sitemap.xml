@@ -1,0 +1,28 @@
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% assign sorted_pages = site.pages | sort: "priority" | reverse %}
+  {% assign sorted_posts = site.posts | sort: "priority" | reverse %}
+  {% for page in sorted_pages %}
+    <url>
+      <loc>{{ site.url }}{{ page.url }}</loc>
+      {% if page.priority %}
+        <priority>{{ page.priority }}</priority>
+      {% endif %}
+      {% if page.changefreq %}
+        <changefreq>{{ page.changefreq }}</changefreq>
+      {% endif %}
+      <lastmod>{{ page.last_modified_at | xmlschema || page.date | xmlschema }}</lastmod>
+    </url>
+  {% endfor %}
+  {% for post in sorted_posts %}
+    <url>
+      <loc>{{ site.url }}{{ post.url }}</loc>
+      <priority>{{ post.priority | default: "0.5" }}</priority>
+      <changefreq>{{ post.changefreq | default: "weekly" }}</changefreq>
+      <lastmod>{{ post.last_modified_at | xmlschema || post.date | xmlschema }}</lastmod>
+    </url>
+  {% endfor %}
+</urlset>
