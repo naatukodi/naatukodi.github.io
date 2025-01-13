@@ -34,8 +34,7 @@ title: Farmer Questionnaire
   input[type="text"],
   input[type="email"],
   input[type="tel"],
-  textarea,
-  select {
+  textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -84,9 +83,12 @@ title: Farmer Questionnaire
 <h1>Farmer Questionnaire: Chicken Sales Partnership</h1>
 <p>This questionnaire is designed to understand your farming and chicken-rearing needs and explore potential partnership opportunities. Please take a few minutes to fill it out.</p>
 
-<form action="https://<your-backend-api-url>/api/farmer/submit" method="POST" id="farmerQuestionnaireForm">
+<form action="https://naatukodiappservice.azurewebsites.net/api/farmer/submit" method="POST" id="farmerQuestionnaireForm">
   <div class="form-section">
     <h3>Personal and Farm Information</h3>
+    <label for="customerId">Customer ID:</label>
+    <input type="text" id="customerId" name="customerId" required>
+
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
